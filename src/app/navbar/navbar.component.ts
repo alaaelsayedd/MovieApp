@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,4 +10,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class NavbarComponent {
   lang: string[] = ['EN', 'AR'];
   selected_lang = 'EN';
+  constructor(private router: Router) {}
+  isHomeRoute(): boolean {
+    return this.router.url === '/';
+  }
 }
