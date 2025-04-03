@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MoiveApiService } from './moive-api.service';
+import { MovieApiService } from './movie-api.service';
 
 describe('MoiveApiService', () => {
-  let service: MoiveApiService;
+  let service: MovieApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MoiveApiService);
+    service = TestBed.inject(MovieApiService);
   });
 
   it('should be created', () => {
