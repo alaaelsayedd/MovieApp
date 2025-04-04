@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MoiveApiService } from './moive-api.service';
+import { MoiveApiService } from './movie-api.service';
 
 describe('MoiveApiService', () => {
   let service: MoiveApiService;
