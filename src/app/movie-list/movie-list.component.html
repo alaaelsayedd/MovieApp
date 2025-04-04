@@ -1,9 +1,30 @@
 <h2 class="my-5">Now Playing</h2>
-<div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 g-2 my-3 px-2 ">
-
-    @for ( movieItem of movies; track movieItem.id)
-    {
-
-    <app-movie-card [movie]="movieItem"> </app-movie-card>
+<div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 g-2 my-3 px-2">
+    @for (movieItem of movies; track movieItem.id) {
+    <app-movie-card [movie]="movieItem"></app-movie-card>
     }
 </div>
+
+<nav aria-label="Movie pagination" class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+        <li class="page-item" [class.disabled]="page === 1">
+            <button class="page-link" (click)="changePage(page - 1)" [disabled]="page === 1">
+                <span aria-hidden="true">&laquo;</span>
+            </button>
+        </li>
+
+        @for(pageNum of getVisiblePages(); track pageNum) {
+        <li class="page-item" [class.active]="pageNum === page">
+            <button class="page-link" (click)="changePage(pageNum)">
+                {{pageNum}}
+            </button>
+        </li>
+        }
+
+        <li class="page-item" [class.disabled]="page === totalPages">
+            <button class="page-link" (click)="changePage(page + 1)" [disabled]="page === totalPages">
+                <span aria-hidden="true">&raquo;</span>
+            </button>
+        </li>
+    </ul>
+</nav>
