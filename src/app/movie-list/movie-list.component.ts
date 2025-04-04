@@ -1,8 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { CommonModule } from '@angular/common';
 import { Movie } from '../types/movie';
 import { MovieApiService } from '../services/movie-api.service';
+import { AppLangService } from '../services/app-lang.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,22 +12,29 @@ import { MovieApiService } from '../services/movie-api.service';
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent {
   movies: Movie[] = [];
   page: number = 1;
   totalPages: number = 0;
   movieRequestService = inject(MovieApiService);
+  languageService = inject(AppLangService);
+  language: string = 'en-US';
 
   ngOnInit() {
-    this.loadMovies();
+    this.languageService.getAppLang().subscribe((lang) => {
+      this.language = lang as string;
+      this.loadMovies();
+    });
   }
 
   loadMovies() {
-    this.movieRequestService.getMovies(this.page).subscribe((data) => {
-      this.movies = data.results;
-      this.page = data.page;
-      this.totalPages = Math.min(data.total_pages, 500);
-    });
+    this.movieRequestService
+      .getMovies(this.page, this.language)
+      .subscribe((data) => {
+        this.movies = data.results;
+        this.page = data.page;
+        this.totalPages = Math.min(data.total_pages, 500);
+      });
   }
 
   changePage(newPage: number) {

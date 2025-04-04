@@ -10,9 +10,9 @@ export class MovieApiService {
   apiKey = '11411b56c85a77fd1d6bf241707b8368';
 
   constructor() {}
-  getMovies(page: Number): Observable<any> {
+  getMovies(page: Number, lang: String): Observable<any> {
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&page=${page}`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&language=${lang}&page=${page}`
     );
   }
 }
