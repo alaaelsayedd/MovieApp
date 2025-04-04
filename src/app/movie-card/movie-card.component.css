@@ -1,5 +1,6 @@
 .image-container {
   margin-bottom: 10px;
+  position: relative;
 }
 
 .image-container img {
@@ -16,6 +17,30 @@ div.col p {
   font-size: 14px;
   color: #888;
 }
-div.col i {
+/* div.col i {
   color: #ffe353;
+} */
+.in-watchlist {
+  color: #ffe353;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.notin-watchlist {
+  color: black;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.detail {
+  background-color: rgba(128, 128, 128, 0.384);
+  padding-inline: 5px;
+  padding-block: 5px;
+  border-radius: 10px;
+
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(250, 248, 248);
+  cursor: pointer;
 }
