@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './movie-card.component.html',
-  styleUrl: './movie-card.component.css'
+  styleUrl: './movie-card.component.css',
 })
 export class MovieCardComponent {
-
+  @Input() movie: any;
 }

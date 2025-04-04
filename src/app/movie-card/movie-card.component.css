@@ -1,0 +1,21 @@
+.image-container {
+  margin-bottom: 10px;
+}
+
+.image-container img {
+  border-radius: 12px;
+  height: 280px;
+}
+div.col {
+  height: 100%;
+}
+div.col h5 {
+  font-size: 16px;
+}
+div.col p {
+  font-size: 14px;
+  color: #888;
+}
+div.col i {
+  color: #ffe353;
+}
