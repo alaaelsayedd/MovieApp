@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #ffe353;
+}
+.active_route {
+  font-weight: 500;
+  color: rgb(54, 53, 53) !important;
+}
+
+.dropdown-menu {
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 4px #00000004;
+  border-radius: 0.5rem;
+}
+
+.dropdown-item {
+  padding: 0.2rem;
+  padding-inline: 10px;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}

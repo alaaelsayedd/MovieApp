@@ -1,0 +1,92 @@
+.image-container {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.image-container img {
+  border-radius: 12px;
+  height: 280px;
+}
+div.col {
+  height: 100%;
+}
+div.col h5 {
+  font-size: 16px;
+}
+div.col p {
+  font-size: 14px;
+  color: #888;
+}
+div.col i {
+  font-size: 16px;
+  margin-top: 5px;
+}
+.in-watchlist {
+  color: #ffe353;
+}
+.notin-watchlist {
+  color: black;
+}
+.detail {
+  background-color: rgba(128, 128, 128, 0.384);
+  padding-inline: 5px;
+  padding-block: 5px;
+  border-radius: 10px;
+
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(250, 248, 248);
+  cursor: pointer;
+}
+
+.progress-circle {
+  position: absolute;
+  bottom: -5px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background: #081c22;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.progress-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-circle path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.progress-circle path:first-child {
+  stroke: #204529;
+}
+
+.progress-circle path:last-child {
+  stroke: #21d07a;
+}
+
+.progress-circle.yellow path:last-child {
+  stroke: #d2d531;
+}
+
+.progress-circle.red path:last-child {
+  stroke: #db2360;
+}
+
+.rating {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}

@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class MoiveApiService {
+export class MovieApiService {
   http = inject(HttpClient);
 
   // Get the Details of a Movie
@@ -16,5 +16,9 @@ export class MoiveApiService {
     );
   }
 
-  constructor() {}
+  getMovies(page: Number, lang: String): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}&language=${lang}&page=${page}`
+    );
+  }
 }

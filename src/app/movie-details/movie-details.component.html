@@ -11,9 +11,16 @@
             <div class="movie-card text-light " style="background-color:   transparent;">
                 <h2>{{movieDetails.title}}</h2>
                 <p class="text-light">{{ movieDetails.release_date | date }}</p>
-
-                <div class="rounded-pill"> {{ (movieDetails.vote_average * 10) | number:'1.0-0'}}<sup>
-                        <small>%</small></sup>
+                <div class="progress-circle" [ngClass]="getRatingColor(movieDetails.vote_average)">
+                    <svg viewBox="0 0 36 36">
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path [attr.stroke-dasharray]="getStrokeDashArray(movieDetails.vote_average)"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                    <span class="rating"> {{ movieDetails.vote_average * 10 | number:'1.0-0' }}
+                        <sup>
+                            <small>%</small></sup>
+                    </span>
                 </div>
 
                 <p>{{movieDetails.overview}}</p>
