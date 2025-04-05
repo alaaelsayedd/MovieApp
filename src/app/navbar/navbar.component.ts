@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AppLangService } from '../services/app-lang.service';
+import { WatchlistService } from '../services/watchlist.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,8 @@ import { AppLangService } from '../services/app-lang.service';
 })
 export class NavbarComponent {
   langugeService = inject(AppLangService);
+  watchlistItemCount = 0;
+  watchlistCount= inject(WatchlistService);
   lang: string[] = ['en-US', 'ar'];
   selected_lang: String = '';
   constructor(private router: Router) {}
@@ -18,6 +21,9 @@ export class NavbarComponent {
   }
   ngOnInit() {
     this.getLanguage();
+    this.watchlistCount.watchlistItems$.subscribe(items => {
+      this.watchlistItemCount = items.length;
+    });
   }
   getLanguage() {
     this.langugeService.getAppLang().subscribe((lang) => {

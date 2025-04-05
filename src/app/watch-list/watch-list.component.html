@@ -1,1 +1,44 @@
-<p>watch-list works!</p>
+<div class="watchlistbx">
+  <h2 class="my-5">watch list</h2>
+  <div class="container">
+    <div class="row">
+      @for (movie of movies; track movie.id) {
+      <div class="watchlist col-lg-5">
+        <i class="fa-solid fa-trash-can text-danger" (click)="removeFromWatchlist(movie.id)"></i>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="img">
+              <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="">
+            </div>
+            <div class="text">
+              <h1>{{ movie.title }} <span></span></h1>
+
+              <h4>{{ movie.release_date }}</h4>
+              <div class="progress-circle" [ngClass]="getRatingColor(movie.vote_average)">
+                <svg viewBox="0 0 36 36">
+                  <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path [attr.stroke-dasharray]="getStrokeDashArray(movie.vote_average)"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <div class="rating">{{ movie.vote_average | number:'1.1-1' }}</div>
+              </div>
+              <p>{{ movie.overview }}</p>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      }
+      @empty {
+        <div class="container  text-center d-flex justify-content-center align-items-center flex-column gap-3">
+          <i class="fa-solid fa-heart-crack"></i>
+          <h1>no movies in watch list</h1>
+          <button class="btn btn-warning" routerLink="/" routerLinkActive="router-link-active" >back to home</button>
+        </div>
+
+      }
+
+    </div>
+  </div>
+</div>

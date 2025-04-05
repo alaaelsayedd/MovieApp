@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { WatchlistService } from '../services/watchlist.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -10,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class MovieCardComponent {
   @Input() movie: any;
-
+  watchlist = inject(WatchlistService)
   getStrokeDashArray(rating: number): string {
     const percentage = rating * 10;
     return `${percentage} 100`;
@@ -21,4 +22,8 @@ export class MovieCardComponent {
     if (rating >= 5) return 'yellow';
     return 'red';
   }
+  AddToWatchlist() {
+    this.watchlist.addToWatchlist(this.movie)
+  }
+
 }

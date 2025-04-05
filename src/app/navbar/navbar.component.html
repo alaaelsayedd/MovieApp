@@ -33,8 +33,13 @@
                     <a class="nav-link active" aria-current="page" routerLink="/watchlist"
                         routerLinkActive="active_route" [routerLinkActiveOptions]="{ exact: true }">
                         <i class="fa-solid fa-heart"></i>
+
                         WatchList
+                        <span class="badge rounded-pill text-bg-light">    {{ watchlistItemCount }}</span>
+
                     </a>
+
+
                 </li>
             </ul>
         </div>

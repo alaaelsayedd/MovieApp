@@ -1,0 +1,97 @@
+.watchlistbx {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+
+}
+
+.watchlistbx .row {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.watchlist {
+  position: relative;
+  padding: 0;
+height: auto;
+  margin: 20px 0;
+  box-shadow: #081c22 10px 10px 30px;
+  border-radius: 30px;
+}
+
+.watchlist .img {
+  width: 35%;
+  height: auto;
+
+
+}
+
+.watchlist .img img {
+  width: 100%;
+  height: 300px;
+
+  border-radius: 30px;
+}
+
+.watchlist .text {
+  position: relative;
+  width: 65%;
+}
+.fa-trash-can{
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.progress-circle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: #081c22;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.progress-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-circle path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.progress-circle path:first-child {
+  stroke: #204529;
+}
+
+.progress-circle path:last-child {
+  stroke: #21d07a;
+}
+
+.progress-circle.yellow path:last-child {
+  stroke: #d2d531;
+}
+
+.progress-circle.red path:last-child {
+  stroke: #db2360;
+}
+
+.rating {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+.fa-heart-crack{
+font-size: 150px;
+color: gray;
+}
