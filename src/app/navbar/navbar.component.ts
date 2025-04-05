@@ -12,8 +12,8 @@ import { WatchlistService } from '../services/watchlist.service';
 export class NavbarComponent {
   langugeService = inject(AppLangService);
   watchlistItemCount = 0;
-  watchlistCount= inject(WatchlistService);
-  lang: string[] = ['en-US', 'ar'];
+  watchlistCount = inject(WatchlistService);
+  lang: string[] = ['en', 'ar', 'fr', 'zh'];
   selected_lang: String = '';
   constructor(private router: Router) {}
   isHomeRoute(): boolean {
@@ -21,7 +21,7 @@ export class NavbarComponent {
   }
   ngOnInit() {
     this.getLanguage();
-    this.watchlistCount.watchlistItems$.subscribe(items => {
+    this.watchlistCount.watchlistItems$.subscribe((items) => {
       this.watchlistItemCount = items.length;
     });
   }

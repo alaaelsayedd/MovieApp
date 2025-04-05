@@ -10,6 +10,9 @@
 div.col {
   height: 100%;
 }
+div.col > div {
+  cursor: pointer;
+}
 div.col h5 {
   font-size: 16px;
 }
