@@ -1,0 +1,48 @@
+/* Footer */
+.footer {
+  padding: 30px 0;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Social Icons */
+.social-icon .icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #212529;
+  font-size: 18px;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.social-icon .icon-circle:hover {
+  background-color: #ffffff;
+  transform: scale(1.5);
+}
+
+/* Policy Links */
+.policy-link {
+  font-size: 14px;
+  color: #6c757d !important;
+  transition: color 0.3s ease;
+}
+
+.policy-link:hover {
+  color: #212529 !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}

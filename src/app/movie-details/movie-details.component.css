@@ -112,7 +112,7 @@ div.col i {
 .rating {
   position: absolute;
   top: 50%;
-  left: 37%;
+  left: 34%;
   transform: translate(-10%, -50%);
   font-weight: bold;
   color: white;

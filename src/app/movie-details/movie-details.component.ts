@@ -4,7 +4,7 @@ import { MovieApiService } from '../services/movie-api.service';
 import { DatePipe } from '@angular/common';
 import { LanguageNamePipe } from '../pipes/language-name.pipe';
 import { CommonModule } from '@angular/common';
-
+import { Movie } from '../types/movie';
 @Component({
   selector: 'app-movie-details',
   imports: [DatePipe, LanguageNamePipe, CommonModule],
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent {
-  movieDetails!: any;
+  movieDetails!: Movie;
   id: string = ''; // Remove @Input() since we're getting the id from the route
   MovieApiService = inject(MovieApiService);
 
