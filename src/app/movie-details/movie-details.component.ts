@@ -6,14 +6,16 @@ import { LanguageNamePipe } from '../pipes/language-name.pipe';
 import { CommonModule } from '@angular/common';
 import { Movie } from '../types/movie';
 import { WatchlistService } from '../services/watchlist.service';
+import { ReviewComponent } from '../review/review.component';
 @Component({
   selector: 'app-movie-details',
-  imports: [DatePipe, LanguageNamePipe, CommonModule],
+  imports: [DatePipe, LanguageNamePipe, CommonModule, ReviewComponent],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent {
   movieDetails!: Movie;
+  movieReviews!: any;
   watchlist = inject(WatchlistService);
 
   id: string = ''; // Remove @Input() since we're getting the id from the route
@@ -26,6 +28,10 @@ export class MovieDetailsComponent {
     if (this.id) {
       this.MovieApiService.getMovieDetails(this.id).subscribe(
         (response) => (this.movieDetails = response)
+      );
+
+      this.MovieApiService.getMovieReviews(this.id).subscribe(
+        (response) => (this.movieReviews = response)
       );
     }
   }
@@ -42,6 +48,7 @@ export class MovieDetailsComponent {
   }
   AddToWatchlist() {
     this.watchlist.addToWatchlist(this.movieDetails);
+    console.log(this.movieReviews);
   }
   removeFromWatchlist(movieId: number) {
     this.watchlist.removeFromWatchlist(movieId);

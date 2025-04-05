@@ -1,0 +1,37 @@
+<div class="container my-5">
+    <div class="review-card d-flex flex-column gap-3">
+        <div class="d-flex align-items-center gap-3">
+            <div class="avatar-initial">
+                @if (review.author_details.avatar_path) {
+
+                <img src="https://image.tmdb.org/t/p/w300{{review.author_details.avatar_path}}" alt=""
+                    class="img-fluid rounded-circle">
+                }@else {
+                {{review.author.slice(0,2)}}
+
+                }
+            </div>
+            <div>
+                <h5 class="mb-0">A review by <strong>{{review.author}}</strong></h5>
+                <small class="text-muted">Written by {{review.author}} on {{review.created_at|date}}</small>
+            </div>
+            <div class="ms-auto">
+                <span class="rating-badge">★ 30%</span>
+            </div>
+        </div>
+        <div class="review-content">
+            <p>"Mickey 17 presents an intriguing sci-fi concept and raises interesting questions, even if it doesn't
+                always explore them with the desired depth.</p>
+            <p>Bong Joon-ho continues to demonstrate his mastery in blending genres, but here, the satire and lack of
+                subtlety in the narrative end up limiting the emotional and philosophical impact of a story centered on
+                sociopolitical themes like identity, technology, and colonialism.</p>
+            <p>Nevertheless, with a star-studded cast led by an excellent Robert Pattinson and a captivating audiovisual
+                style, the South Korean filmmaker reinforces his status as one of the most creative directors working
+                today, delivering an experience that falls somewhere between fascinatingly hilarious and frustratingly
+                superficial."</p>
+            <p><strong>Rating:</strong> B</p>
+            <p><strong>FULL REVIEW </strong> <a href="{{review.url}}" target="_blank">Link</a></p>
+
+        </div>
+    </div>
+</div>

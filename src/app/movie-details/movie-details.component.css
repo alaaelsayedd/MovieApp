@@ -115,3 +115,15 @@ div.col i {
   color: white;
   font-size: 15px;
 }
+.no-reviews {
+  background-color: #f8f9fa;
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px dashed #ced4da;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+}
+
+.no-reviews-icon {
+  font-size: 48px;
+  color: #6c757d;
+}

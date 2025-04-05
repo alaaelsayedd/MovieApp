@@ -54,6 +54,22 @@
             </div>
         </div>
     </div>
+    <div>
+        @if (movieReviews.results.length > 0) {
+        @for (movieReview of movieReviews.results; track $index) {
+
+        <app-review [review]="movieReview"></app-review>
+
+        }}@else {
+        <div class="no-reviews text-center my-5">
+            <div class="no-reviews-icon mb-3">
+                <i class="bi bi-chat-dots"></i>
+            </div>
+            <h2>No Reviews</h2>
+        </div>
+
+        }
+    </div>
 </div>
 }@else {
 

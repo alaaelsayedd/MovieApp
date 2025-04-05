@@ -21,4 +21,10 @@ export class MovieApiService {
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}&language=${lang}&page=${page}`
     );
   }
+
+  getMovieReviews(id: string): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${environment.apiKey}`
+    );
+  }
 }
