@@ -1,0 +1,12 @@
+.not-found-page {
+  background-color: #f8f9fa;
+  padding: 60px 20px;
+  border-radius: 12px;
+  border: 1px dashed #ced4da;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.not-found-icon {
+  font-size: 64px;
+  color: #dc3545; /* Bootstrap's danger color */
+}

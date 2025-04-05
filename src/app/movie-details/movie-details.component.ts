@@ -7,9 +7,16 @@ import { CommonModule } from '@angular/common';
 import { Movie } from '../types/movie';
 import { WatchlistService } from '../services/watchlist.service';
 import { ReviewComponent } from '../review/review.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
 @Component({
   selector: 'app-movie-details',
-  imports: [DatePipe, LanguageNamePipe, CommonModule, ReviewComponent],
+  imports: [
+    DatePipe,
+    LanguageNamePipe,
+    CommonModule,
+    ReviewComponent,
+    NotFoundComponent,
+  ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
 })
