@@ -1,5 +1,5 @@
 @if (movieDetails) {
-<div class="container mt-5">
+<div class=" my-5">
     <div class="row p-5 movieBackGround "
         [style.backgroundImage]="'linear-gradient(to right, rgba(70, 30, 100, 0.9) calc((50vw - 170px) - 340px), rgba(30, 60, 120, 0.7) 50%, rgba(120, 30, 80, 0.5) 100%), url(https://image.tmdb.org/t/p/original' + movieDetails.backdrop_path + ')'">
         <div class="col-md-3">
@@ -9,7 +9,17 @@
         </div>
         <div class="col-md-8">
             <div class="movie-card text-light " style="background-color:   transparent;">
-                <h2>{{movieDetails.title}}</h2>
+                <h2>{{movieDetails.title}}
+                    @if (isInWatchlist()) {
+                    <i class="fa-solid fa-heart" style="color: yellow;" (click)="removeFromWatchlist(movieDetails.id)">
+                    </i>
+                    } @else {
+                    <i class="fa-solid fa-heart" (click)="AddToWatchlist()">
+                    </i>
+                    }
+
+                </h2>
+
                 <p class="text-light">{{ movieDetails.release_date | date }}</p>
                 <div class="progress-circle" [ngClass]="getRatingColor(movieDetails.vote_average)">
                     <svg viewBox="0 0 36 36">

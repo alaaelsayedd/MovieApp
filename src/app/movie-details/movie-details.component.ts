@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { LanguageNamePipe } from '../pipes/language-name.pipe';
 import { CommonModule } from '@angular/common';
 import { Movie } from '../types/movie';
+import { WatchlistService } from '../services/watchlist.service';
 @Component({
   selector: 'app-movie-details',
   imports: [DatePipe, LanguageNamePipe, CommonModule],
@@ -13,6 +14,8 @@ import { Movie } from '../types/movie';
 })
 export class MovieDetailsComponent {
   movieDetails!: Movie;
+  watchlist = inject(WatchlistService);
+
   id: string = ''; // Remove @Input() since we're getting the id from the route
   MovieApiService = inject(MovieApiService);
 
@@ -36,5 +39,16 @@ export class MovieDetailsComponent {
     if (rating >= 7) return '';
     if (rating >= 5) return 'yellow';
     return 'red';
+  }
+  AddToWatchlist() {
+    this.watchlist.addToWatchlist(this.movieDetails);
+  }
+  removeFromWatchlist(movieId: number) {
+    this.watchlist.removeFromWatchlist(movieId);
+  }
+  isInWatchlist(): boolean {
+    return this.watchlist
+      .getWatchlist()
+      .some((movie) => movie.id === this.movieDetails.id);
   }
 }
