@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-2 ms-auto mb-2 mb-lg-0 gap-2">
+            <ul class="navbar-nav mb-2 mb-lg-0 gap-2" [ngClass]="direc=='rtl' ? 'me-auto' : 'ms-auto'">
                 @if(isHomeRoute())
                 {
                 <li class="nav-item dropdown">
@@ -35,7 +35,7 @@
                         <i class="fa-solid fa-heart"></i>
 
                         WatchList
-                        <span class="badge rounded-pill text-bg-light">    {{ watchlistItemCount }}</span>
+                        <span class="badge rounded-pill text-bg-light"> {{ watchlistItemCount }}</span>
 
                     </a>
 
