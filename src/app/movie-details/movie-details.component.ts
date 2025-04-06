@@ -23,6 +23,8 @@ import { NotFoundComponent } from '../not-found/not-found.component';
 export class MovieDetailsComponent {
   movieDetails!: Movie;
   movieReviews!: any;
+  loading: boolean = true;
+
   watchlist = inject(WatchlistService);
 
   id: string = ''; // Remove @Input() since we're getting the id from the route
@@ -41,6 +43,8 @@ export class MovieDetailsComponent {
         (response) => (this.movieReviews = response)
       );
     }
+
+    this.loading = false;
   }
 
   getStrokeDashArray(rating: number): string {

@@ -1,3 +1,6 @@
+@if (loading) {
+<h1>Loading</h1>
+}@else {
 @if (movieDetails) {
 <div class=" my-5">
     <div class="row p-5 movieBackGround "
@@ -71,8 +74,8 @@
         }
     </div>
 </div>
-}@else {
-
+}@else if (!movieDetails) {
 <app-not-found></app-not-found>
 
+}
 }
