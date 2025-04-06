@@ -6,14 +6,16 @@
       @for (movie of movies; track movie.id) {
       <div class="col-6 ">
         <div class="watchlist ">
-          <i class="fa-solid fa-heart in-watchlist" (click)="removeFromWatchlist(movie.id)"></i>
+          <i class="fa-solid fa-heart in-watchlist" (click)="removeFromWatchlist(movie.id)"
+            [ngClass]="direc=='rtl' ? 'left' : 'right'"></i>
 
           <!-- <i class="fa-solid fa-trash-can text-danger" (click)="removeFromWatchlist(movie.id)"></i> -->
           <div class="container-fluid p-4">
             <div class="row">
               <div class="img">
                 <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="">
-                <div class="progress-circle" [ngClass]="getRatingColor(movie.vote_average)">
+                <div class="progress-circle" [ngClass]="getRatingColor(movie.vote_average)"
+                  [ngStyle]=" direc === 'rtl' ? { left: '20px' } : { right: '20px' }">
                   <svg viewBox="0 0 36 36">
                     <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                     <path [attr.stroke-dasharray]="getStrokeDashArray(movie.vote_average)"
