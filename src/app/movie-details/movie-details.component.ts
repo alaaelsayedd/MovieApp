@@ -59,7 +59,7 @@ export class MovieDetailsComponent {
   }
   AddToWatchlist() {
     this.watchlist.addToWatchlist(this.movieDetails);
-    console.log(this.movieReviews);
+    // console.log(this.movieReviews);
   }
   removeFromWatchlist(movieId: number) {
     this.watchlist.removeFromWatchlist(movieId);

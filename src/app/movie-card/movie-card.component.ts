@@ -11,7 +11,8 @@ import { WatchlistService } from '../services/watchlist.service';
 })
 export class MovieCardComponent {
   @Input() movie: any;
-  watchlist = inject(WatchlistService)
+  watchlist = inject(WatchlistService);
+
   getStrokeDashArray(rating: number): string {
     const percentage = rating * 10;
     return `${percentage} 100`;
@@ -23,7 +24,14 @@ export class MovieCardComponent {
     return 'red';
   }
   AddToWatchlist() {
-    this.watchlist.addToWatchlist(this.movie)
+    this.watchlist.addToWatchlist(this.movie);
   }
-
+  removeFromWatchlist() {
+    this.watchlist.removeFromWatchlist(this.movie.id);
+  }
+  isInWatchlist(): boolean {
+    return this.watchlist
+      .getWatchlist()
+      .some((movie) => movie.id === this.movie.id);
+  }
 }

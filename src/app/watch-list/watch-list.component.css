@@ -2,7 +2,6 @@
   width: 100%;
   height: auto;
   margin-top: 20px;
-
 }
 
 .watchlistbx .row {
@@ -13,17 +12,17 @@
 .watchlist {
   position: relative;
   padding: 0;
-height: auto;
-  margin: 20px 0;
-  box-shadow: #081c22 10px 10px 30px;
+  height: auto;
+  /* box-shadow: #081c2277 0px 0px 5px; */
+  -webkit-box-shadow: 0px 7px 5px 0px rgba(201, 201, 201, 1);
+  -moz-box-shadow: 0px 7px 5px 0px rgba(201, 201, 201, 1);
+  box-shadow: 0px 7px 5px 0px rgba(201, 201, 201, 1);
   border-radius: 30px;
 }
 
 .watchlist .img {
   width: 35%;
-  height: auto;
-
-
+  position: relative;
 }
 
 .watchlist .img img {
@@ -37,16 +36,22 @@ height: auto;
   position: relative;
   width: 65%;
 }
-.fa-trash-can{
+.watchlist p.date {
+  font-size: 14px;
+  color: gray;
+}
+.fa-heart {
   cursor: pointer;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 50px;
+  right: 35px;
+  font-size: 25px;
+  z-index: 99;
 }
 .progress-circle {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 18px;
+  right: 20px;
   width: 40px;
   height: 40px;
   background: #081c22;
@@ -91,7 +96,16 @@ height: auto;
   font-size: 12px;
   font-weight: bold;
 }
-.fa-heart-crack{
-font-size: 150px;
-color: gray;
+.fa-heart-crack {
+  font-size: 150px;
+  color: rgba(128, 128, 128, 0.062);
+}
+
+button {
+  background-color: #ffe353;
+  color: rgb(49, 49, 49);
+}
+button:hover {
+  background-color: #ffe353;
+  color: rgb(49, 49, 49);
 }

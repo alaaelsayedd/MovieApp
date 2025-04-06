@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AppLangService {
-  private lang = new BehaviorSubject<String>('en-US');
+  private lang = new BehaviorSubject<String>('en');
 
   constructor() {}
   getAppLang() {
@@ -14,12 +14,4 @@ export class AppLangService {
   setAppLang(lang: string) {
     this.lang.next(lang);
   }
-  // addToCart(product: CartItem) {
-  //   let isProductExist = this.cart
-  //     .getValue()
-  //     .find((p) => p.productId === product.productId);
-  //   if (!isProductExist) {
-  //     this.cart.next([...this.cart.getValue(), product]);
-  //   }
-  // }
 }

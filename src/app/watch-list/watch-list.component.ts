@@ -5,12 +5,11 @@ import { Component, inject } from '@angular/core';
 import { Movie } from '../types/movie';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-
 @Component({
   selector: 'app-watch-list',
-  imports: [CommonModule,RouterLink,RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './watch-list.component.html',
-  styleUrl: './watch-list.component.css'
+  styleUrl: './watch-list.component.css',
 })
 export class WatchListComponent {
   watchlist = inject(WatchlistService);
@@ -21,7 +20,7 @@ export class WatchListComponent {
   }
 
   ngOnInit() {
-    this.watchlist.watchlistItems$.subscribe(movies => {
+    this.watchlist.watchlistItems$.subscribe((movies) => {
       this.movies = movies;
     });
   }
