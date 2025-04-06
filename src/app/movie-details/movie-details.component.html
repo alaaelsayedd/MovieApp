@@ -1,3 +1,6 @@
+@if (loading) {
+<h1>Loading</h1>
+}@else {
 @if (movieDetails) {
 <div class=" my-5">
     <div class="row p-5 movieBackGround "
@@ -54,6 +57,14 @@
             </div>
         </div>
     </div>
+    <br />
+    <h2 class="my-2">Recommendations</h2>
+    <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 g-2 my-3 px-2 shadow ">
+        @for (movieItem of moviesRecommendations.results; track $index) {
+        @if ($index<6){ <app-movie-card [movie]=" movieItem"></app-movie-card>
+            }
+            }
+    </div>
     <div>
         @if (movieReviews.results.length > 0) {
         @for (movieReview of movieReviews.results; track $index) {
@@ -70,9 +81,14 @@
 
         }
     </div>
+
+
+
+
+
 </div>
-}@else {
+}@else if (!movieDetails) {
 
-<app-not-found></app-not-found>
 
+}
 }

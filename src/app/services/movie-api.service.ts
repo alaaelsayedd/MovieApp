@@ -27,4 +27,18 @@ export class MovieApiService {
       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${environment.apiKey}`
     );
   }
+
+  getMovieRecommendations(id: string): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${environment.apiKey}`
+    );
+  }
+
+  searchMovies(query: string): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${
+        environment.apiKey
+      }&query=${encodeURIComponent(query)}`
+    );
+  }
 }

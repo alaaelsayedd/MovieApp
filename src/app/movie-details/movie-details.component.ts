@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; // Import ActivatedRoute
+import { ActivatedRoute, Router } from '@angular/router'; // Import ActivatedRoute
 import { MovieApiService } from '../services/movie-api.service';
 import { DatePipe } from '@angular/common';
 import { LanguageNamePipe } from '../pipes/language-name.pipe';
@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
 import { Movie } from '../types/movie';
 import { WatchlistService } from '../services/watchlist.service';
 import { ReviewComponent } from '../review/review.component';
-import { NotFoundComponent } from '../not-found/not-found.component';
+import { MovieCardComponent } from '../movie-card/movie-card.component';
+
 @Component({
   selector: 'app-movie-details',
   imports: [
@@ -15,7 +16,7 @@ import { NotFoundComponent } from '../not-found/not-found.component';
     LanguageNamePipe,
     CommonModule,
     ReviewComponent,
-    NotFoundComponent,
+    MovieCardComponent,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
@@ -23,6 +24,10 @@ import { NotFoundComponent } from '../not-found/not-found.component';
 export class MovieDetailsComponent {
   movieDetails!: Movie;
   movieReviews!: any;
+  moviesRecommendations!: any;
+
+  loading: boolean = true;
+
   watchlist = inject(WatchlistService);
 
   id: string = ''; // Remove @Input() since we're getting the id from the route
@@ -40,7 +45,13 @@ export class MovieDetailsComponent {
       this.MovieApiService.getMovieReviews(this.id).subscribe(
         (response) => (this.movieReviews = response)
       );
+
+      this.MovieApiService.getMovieRecommendations(this.id).subscribe(
+        (response) => (this.moviesRecommendations = response)
+      );
     }
+
+    this.loading = false;
   }
 
   getStrokeDashArray(rating: number): string {
@@ -55,7 +66,7 @@ export class MovieDetailsComponent {
   }
   AddToWatchlist() {
     this.watchlist.addToWatchlist(this.movieDetails);
-    // console.log(this.movieReviews);
+    console.log(this.moviesRecommendations.results);
   }
   removeFromWatchlist(movieId: number) {
     this.watchlist.removeFromWatchlist(movieId);
