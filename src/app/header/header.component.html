@@ -2,7 +2,27 @@
     <h1 class="my-4">Welcome to our movie app</h1>
     <p class="mb-3">Millions of movies, TV shows and people to discover. Explore now</p>
     <div class="search d-flex gap-2">
-        <input type="text" placeholder="Search for a movie, tv show, person..." class="d-block col-9 p-2 " />
-        <button class="d-block col-3">Search</button>
-    </div>
+    <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search and explore..."
+           (keydown.enter)="onSearch()">
+    <button class="btn" (click)="onSearch()">Search</button>
+  </div>
 </div>
+
+<div *ngIf="searchResults.length > 0; else noResults" class="search-results mt-3">
+  <h5><strong>Search Results for: </strong>{{ searchQuery }}</h5>
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let movie of searchResults">
+      <div class="card">
+        <img [src]="imgBaseUrl + movie.poster_path" class="card-img-top" alt="movie poster" />
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text">{{ movie.release_date | date }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noResults>
+  <p class="text-center text-muted">No results found. Try searching for something else.</p>
+</ng-template>
