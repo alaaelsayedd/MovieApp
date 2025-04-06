@@ -8,6 +8,7 @@ import { Movie } from '../types/movie';
 import { WatchlistService } from '../services/watchlist.service';
 import { ReviewComponent } from '../review/review.component';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { AppLangService } from '../services/app-lang.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -27,7 +28,8 @@ export class MovieDetailsComponent {
   moviesRecommendations!: any;
 
   loading: boolean = true;
-
+  languageService = inject(AppLangService);
+  language: string = 'en';
   watchlist = inject(WatchlistService);
 
   id: string = ''; // Remove @Input() since we're getting the id from the route
@@ -36,23 +38,52 @@ export class MovieDetailsComponent {
   constructor(private route: ActivatedRoute) {} // Inject ActivatedRoute
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id') || ''; // Get the id from the route
-    if (this.id) {
-      this.MovieApiService.getMovieDetails(this.id).subscribe(
-        (response) => (this.movieDetails = response)
-      );
+    this.route.paramMap.subscribe((params) => {
+      this.id = params.get('id') || '';
+      // this.id = this.route.snapshot.paramMap.get('id') || ''; // Get the id from the route
+      if (this.id) {
+        this.languageService.getAppLang().subscribe((lang) => {
+          this.language = lang as string;
+        });
+        this.MovieApiService.getMovieDetails(this.id, this.language).subscribe(
+          (response) => (this.movieDetails = response)
+        );
 
-      this.MovieApiService.getMovieReviews(this.id).subscribe(
-        (response) => (this.movieReviews = response)
-      );
+        this.MovieApiService.getMovieReviews(this.id, this.language).subscribe(
+          (response) => (this.movieReviews = response)
+        );
 
-      this.MovieApiService.getMovieRecommendations(this.id).subscribe(
-        (response) => (this.moviesRecommendations = response)
-      );
-    }
+        this.MovieApiService.getMovieRecommendations(
+          this.id,
+          this.language
+        ).subscribe((response) => (this.moviesRecommendations = response));
+      }
 
-    this.loading = false;
+      this.loading = false;
+    });
   }
+
+  // ngOnChanges() {
+  //   this.id = this.route.snapshot.paramMap.get('id') || '';
+  //   if (this.id) {
+  //     this.languageService.getAppLang().subscribe((lang) => {
+  //       this.language = lang as string;
+  //     });
+  //     this.MovieApiService.getMovieDetails(this.id, this.language).subscribe(
+  //       (response) => (this.movieDetails = response)
+  //     );
+
+  //     this.MovieApiService.getMovieReviews(this.id, this.language).subscribe(
+  //       (response) => (this.movieReviews = response)
+  //     );
+
+  //     this.MovieApiService.getMovieRecommendations(
+  //       this.id,
+  //       this.language
+  //     ).subscribe((response) => (this.moviesRecommendations = response));
+  //   }
+  //   this.loading = false;
+  // }
 
   getStrokeDashArray(rating: number): string {
     const percentage = rating * 10;

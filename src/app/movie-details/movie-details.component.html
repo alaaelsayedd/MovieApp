@@ -58,21 +58,33 @@
         </div>
     </div>
     <br />
+    @if (moviesRecommendations.results.length >0) {
     <h2 class="my-2">Recommendations</h2>
-    <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 g-2 my-3 px-2 shadow ">
+    <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 g-3 my-3 px-2 shadow justify-content-center  "
+        style="border-radius: 10px;">
         @for (movieItem of moviesRecommendations.results; track $index) {
-        @if ($index < 6){ <app-movie-card [movie]=" movieItem"></app-movie-card>
+        @if ($index<6 && movieItem.poster_path ){ <app-movie-card [movie]=" movieItem"></app-movie-card>
             }
             }
     </div>
+    }@else {
+    <div class="no-reviews text-center my-5">
+        <div class="no-reviews-icon mb-3">
+            <i class="bi bi-chat-dots"></i>
+        </div>
+        <h2>No Recommendations</h2>
+    </div>
+    }
     <div>
         @if (movieReviews.results.length > 0) {
+        <h2 class="mt-5">Reviews</h2>
+
         @for (movieReview of movieReviews.results; track $index) {
 
         <app-review [review]="movieReview"></app-review>
 
         }}@else {
-        <div class="no-reviews text-center my-5">
+        <div class="no-reviews text-center mb-5">
             <div class="no-reviews-icon mb-3">
                 <i class="bi bi-chat-dots"></i>
             </div>

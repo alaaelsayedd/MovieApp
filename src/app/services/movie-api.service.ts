@@ -10,9 +10,9 @@ export class MovieApiService {
   http = inject(HttpClient);
 
   // Get the Details of a Movie
-  getMovieDetails(id: string): Observable<any> {
+  getMovieDetails(id: string, lang: string): Observable<any> {
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.apiKey}`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.apiKey}&language=${lang}`
     );
   }
 
@@ -22,15 +22,15 @@ export class MovieApiService {
     );
   }
 
-  getMovieReviews(id: string): Observable<any> {
+  getMovieReviews(id: string, lang: String): Observable<any> {
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${environment.apiKey}`
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${environment.apiKey}&language=${lang}`
     );
   }
 
-  getMovieRecommendations(id: string): Observable<any> {
+  getMovieRecommendations(id: string, lang: String): Observable<any> {
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${environment.apiKey}`
+      `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${environment.apiKey}&language=${lang}`
     );
   }
 
