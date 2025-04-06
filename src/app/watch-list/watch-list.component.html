@@ -1,41 +1,48 @@
 <div class="watchlistbx">
-  <h2 class="my-5">watch list</h2>
-  <div class="container">
-    <div class="row">
+
+  <div class="container-fluid px-4">
+    <h2 class="mt-4">Watch list</h2>
+    <div class="row g-4 justify-content-start">
       @for (movie of movies; track movie.id) {
-      <div class="watchlist col-lg-5">
-        <i class="fa-solid fa-trash-can text-danger" (click)="removeFromWatchlist(movie.id)"></i>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="img">
-              <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="">
-            </div>
-            <div class="text">
-              <h1>{{ movie.title }} <span></span></h1>
+      <div class="col-6 ">
+        <div class="watchlist ">
+          <i class="fa-solid fa-heart in-watchlist" (click)="removeFromWatchlist(movie.id)"></i>
 
-              <h4>{{ movie.release_date }}</h4>
-              <div class="progress-circle" [ngClass]="getRatingColor(movie.vote_average)">
-                <svg viewBox="0 0 36 36">
-                  <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                  <path [attr.stroke-dasharray]="getStrokeDashArray(movie.vote_average)"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                </svg>
-                <div class="rating">{{ movie.vote_average | number:'1.1-1' }}</div>
+          <!-- <i class="fa-solid fa-trash-can text-danger" (click)="removeFromWatchlist(movie.id)"></i> -->
+          <div class="container-fluid p-4">
+            <div class="row">
+              <div class="img">
+                <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="">
+                <div class="progress-circle" [ngClass]="getRatingColor(movie.vote_average)">
+                  <svg viewBox="0 0 36 36">
+                    <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path [attr.stroke-dasharray]="getStrokeDashArray(movie.vote_average)"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="rating">{{ movie.vote_average*10 | number:'1.0-0' }}%</div>
+                </div>
               </div>
-              <p>{{ movie.overview }}</p>
+              <div class="text">
+                <h1 class="fs-4 col-8">{{ movie.title }} <span></span></h1>
+
+                <p class="date">{{ movie.release_date |date}}</p>
+
+                <!-- <p>{{ movie.overview }}</p> -->
+                <p>{{ movie.overview.length > 200 ? (movie.overview | slice:0:200) + '...' : movie.overview }}</p>
+
+              </div>
 
             </div>
-
           </div>
         </div>
       </div>
       }
       @empty {
-        <div class="container  text-center d-flex justify-content-center align-items-center flex-column gap-3">
-          <i class="fa-solid fa-heart-crack"></i>
-          <h1>no movies in watch list</h1>
-          <button class="btn btn-warning" routerLink="/" routerLinkActive="router-link-active" >back to home</button>
-        </div>
+      <div class="container  text-center d-flex justify-content-center align-items-center flex-column gap-3 my-5">
+        <i class="fa-solid fa-heart-crack"></i>
+        <h1 class="fs-6">no movies in watch list</h1>
+        <button class="btn col-4 " routerLink="/" routerLinkActive="router-link-active">back to home</button>
+      </div>
 
       }
 
