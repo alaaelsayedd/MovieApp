@@ -19,17 +19,16 @@
                 <h5>{{ movie.title }}</h5>
                 <p>{{ movie.release_date |date }}</p>
             </div>
-            @if(isInWatchlist()){
+
             <span class=" d-block text-end ">
-                <i class="fa-solid fa-heart in-watchlist"></i>
+                @if(isInWatchlist()){
+                <i class="fa-solid fa-heart in-watchlist" (click)="removeFromWatchlist()"></i>
+                }
+                @else{
+                <i class="fa-regular fa-heart" (click)="AddToWatchlist()"></i>
+                }
             </span>
-            }
-            @else
-            {
-            <span class="material-symbols-outlined" (click)="AddToWatchlist()">
-                favorite
-            </span>
-            }
+
 
 
         </div>

@@ -26,6 +26,9 @@ export class MovieCardComponent {
   AddToWatchlist() {
     this.watchlist.addToWatchlist(this.movie);
   }
+  removeFromWatchlist() {
+    this.watchlist.removeFromWatchlist(this.movie.id);
+  }
   isInWatchlist(): boolean {
     return this.watchlist
       .getWatchlist()
